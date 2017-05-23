@@ -1,0 +1,23 @@
+[
+  {
+    "partial": "The capital of Egypt is Cairo",
+    "cloze": "Cairo"
+  },
+  {
+    "partial": "Brazil is the largest country of South America",
+    "cloze": "Brazil"
+  },
+  {
+    "partial": "Italy is located in Europe",
+    "cloze": "Europe"
+  },
+  {
+    "partial": "Asia is the largest continent.",
+    "cloze": "Asia"
+  },
+  {
+    "partial": "The only bicontinental country is Russia",
+    "cloze": "Russia"
+  }
+
+]

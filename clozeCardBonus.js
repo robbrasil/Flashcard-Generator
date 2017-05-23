@@ -1,0 +1,67 @@
+
+var ClozeCard = require("./lib/ClozeCard");
+var cardData = require("./cloze.json");
+var inquirer = require("inquirer");
+
+startGame();
+
+function startGame() {
+  var currentCard;
+  var cardArray = [];
+  var initialScore = 0;
+  var initialIndex = 0;
+
+  for (var i = 0; i < cardData.length; i++) {
+    currentCard = new ClozeCard(cardData[i].partial, cardData[i].cloze);
+    cardArray.push(currentCard);
+  }
+  round(initialScore, cardArray, initialIndex);
+}
+
+function endGame(score) {
+  console.log("Game Over!");
+  console.log("Your score is:", score);
+  inquirer.prompt([{
+    type: "input",
+    name: "text",
+    message: "Play again?"
+  }]).then(function(answer) {
+    if (answer.text.charAt(0).toLowerCase() === "y") {
+      startGame();
+    } 
+    else {
+      console.log("Thanks for playing!");
+      console.log("Goodbye!");
+    }
+  });
+}
+
+function round(currentScore, cardArray, currentIndex) {
+  if (currentIndex < cardArray.length) {
+    promptUser(cardArray, currentIndex, currentScore);
+  }
+  else {
+    endGame(currentScore);
+  }
+}
+
+function promptUser(cardArray, currentIndex, currentScore) {
+  var card = cardArray[currentIndex];
+  inquirer.prompt([{
+    type: "input",
+    name: "text",
+    message: card.partial + "\nAnswer:"
+  }]).then(function(answer) {
+    if (answer.text.trim().toLowerCase() === card.cloze.trim().toLowerCase()) {
+      currentScore++;
+      console.log("\nYou are correct!");
+    }
+    else {
+      console.log("\nIncorrect!");
+    }
+    console.log(card.displayCard());
+    currentIndex++;
+    console.log("-------------------------\n");
+    round(currentScore, cardArray, currentIndex);
+  });
+}

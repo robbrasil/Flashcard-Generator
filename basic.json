@@ -1,0 +1,22 @@
+[
+  {
+    "front": "The capital of Egypt is ...",
+    "back": "Cairo"
+  },
+  {
+    "front": "... is the largest country of South America",
+    "back": "Brazil"
+  },
+  {
+    "front": "Italy is located in ...",
+    "back": "Europe"
+  },
+  {
+    "front": "... is the largest continent.",
+    "back": "Asia"
+  },
+  {
+    "front": "The only bicontinental country is ...",
+    "back": "Russia"
+  }
+]
